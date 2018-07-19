@@ -34,6 +34,12 @@ dependencies {
     implementation "com.android.support.constraint:constraint-layout:${rootProject.ext.constraintLayoutVersion}"
     testImplementation "junit:junit:${rootProject.ext.junitVersion}"
 
+    // Recyclerview
+    implementation "com.android.support:recyclerview-v7:${rootProject.ext.supportLibVersion}"
+
+    // Arch
+    implementation "android.arch.lifecycle:extensions:${rootProject.ext.archVersion}"
+
     // Dagger 2
     implementation "com.google.dagger:dagger-android:${rootProject.ext.dagger2Version}"
     kapt "com.google.dagger:dagger-compiler:${rootProject.ext.dagger2Version}"
@@ -48,8 +54,6 @@ dependencies {
 
     androidTestImplementation "com.android.support.test:runner:${rootProject.ext.testRunnerVersion}"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${rootProject.ext.testEspressoVersion}"
-
-    implementation "android.arch.lifecycle:extensions:${rootProject.ext.archVersion}"
 
     implementation project(':domain')
     implementation project(':data')

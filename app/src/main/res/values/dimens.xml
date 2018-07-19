@@ -17,4 +17,9 @@
     <dimen name="recyclerview_item_padding_vertical">10dp</dimen>
     <dimen name="recyclerview_item_padding_horizontal">10dp</dimen>
 
+    <dimen name="activitydetail_titlecontainer_height">50dp</dimen>
+    <dimen name="activitydetail_titlecontainer_contentheight">40dp</dimen>
+
+
+
 </resources>
