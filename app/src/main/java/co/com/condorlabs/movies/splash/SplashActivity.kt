@@ -1,13 +1,10 @@
-package co.com.condorlabs.movies.movielist
+package co.com.condorlabs.movies.splash
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import co.com.condorlabs.movies.R
 
-/**
- * @author Luis Goyes on 7/19/18.
- */
-class MovieListActivity : AppCompatActivity(), MovieListContract.View {
+class SplashActivity : AppCompatActivity(), SplashContract.View {
     override fun showError(error: String) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -20,11 +17,8 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    private val mPresenter: MovieListContract.Presenter = MovieListActivityPresenter()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie_list)
-        mPresenter.bind(this)
+        setContentView(R.layout.activity_splash)
     }
 }

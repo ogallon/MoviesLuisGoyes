@@ -1,12 +1,12 @@
-package co.com.condorlabs.movies.movielist
+package co.com.condorlabs.movies.splash
 
 import co.com.condorlabs.movies.presenters.IBasePresenter
 import co.com.condorlabs.movies.views.IBaseView
 
 /**
- * @author Luis Goyes on 7/19/18.
+ * @author Luis Goyes (lgoyes@condorlabs.io) on July/19/2018
  */
-interface MovieListContract {
+interface SplashContract {
     interface View : IBaseView {
 
     }
