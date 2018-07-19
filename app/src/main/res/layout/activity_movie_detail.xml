@@ -7,39 +7,48 @@
     tools:context=".moviedetail.MovieDetailActivity">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!--
+            https://github.com/ar-android/Filem
+        -->
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_activitydetail_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="@dimen/activitydetail_margin_top"
+            android:layout_marginBottom="@dimen/activitydetail_margin_bottom"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/activitydetail_titlecontainer_contentheight"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="@dimen/activitydetail_margin_horizontal"
                 android:gravity="center_vertical"
                 android:text="@string/activitydetail_movietitle"
                 android:textAppearance="@android:style/TextAppearance.Material.Title"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline1"
+                android:textSize="@dimen/big_text"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_activitydetail_title"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <android.support.constraint.Guideline
-                android:id="@+id/guideline1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="@dimen/activitydetail_titlecontainer_height" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/activitydetail_titlecontainer_contentheight"
+                android:layout_height="@dimen/activitydetail_titlecontainer_contentheight"
+                android:layout_marginEnd="@dimen/activitydetail_margin_horizontal"
+                android:contentDescription="@string/activitydetail_favorite_description"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_activitydetail_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_favorite_border_black_24dp" />
 
             <View
                 android:id="@+id/view"
@@ -48,20 +57,27 @@
                 android:layout_marginEnd="24dp"
                 android:layout_marginStart="24dp"
                 android:background="@android:color/darker_gray"
-                app:layout_constraintBottom_toTopOf="@+id/guideline1"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_activitydetail_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="@dimen/activitydetail_titlecontainer_contentheight"
-                android:layout_height="@dimen/activitydetail_titlecontainer_contentheight"
-                android:layout_marginEnd="24dp"
-                android:contentDescription="@string/activitydetail_favorite_description"
-                app:layout_constraintBottom_toTopOf="@+id/guideline1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_favorite_border_black_24dp" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_activitydetail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="@dimen/activitydetail_titlecontainer_height" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="@string/activitydetail_overview"
+                android:textSize="@dimen/medium_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_activitydetail_title" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
