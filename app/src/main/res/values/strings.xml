@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Movies</string>
+    <string name="signature_goyes">Luis David Goyes Garcés</string>
+
+    <string name="filter_vote_couter_greater_2000"><![CDATA[Filter: Vote counter > 2000]]></string>
+    <string name="filter_show_only_favorite_movies">Filter: Show only favs</string>
 </resources>
