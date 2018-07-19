@@ -37,6 +37,8 @@ ext {
     // Dagger 2
     dagger2Version = "2.16"
 
+    // Arch
+    archVersion = "1.1.1"
 
     // Rx
     rxAndroidVersion = "2.0.2"
