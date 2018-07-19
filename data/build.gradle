@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
 
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -28,6 +31,24 @@ dependencies {
     testImplementation "junit:junit:${rootProject.ext.junitVersion}"
     androidTestImplementation "com.android.support.test:runner:${rootProject.ext.testRunnerVersion}"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${rootProject.ext.testEspressoVersion}"
+
+    // Retrofit
+    implementation "com.google.code.gson:gson:${rootProject.ext.gsonVersion}"
+    implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofitVersion}"
+
+    //Room
+    implementation "android.arch.persistence.room:runtime:${rootProject.ext.room_version}"
+    kapt "android.arch.persistence.room:compiler:${rootProject.ext.room_version}"
+
+    // Dagger 2
+    implementation "com.google.dagger:dagger-android:${rootProject.ext.dagger2Version}"
+    kapt "com.google.dagger:dagger-compiler:${rootProject.ext.dagger2Version}"
+    kapt "com.google.dagger:dagger-android-processor:${rootProject.ext.dagger2Version}"
+
+    // Rx
+    implementation "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxJava2Version}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxAndroidVersion}"
 
     implementation project(':domain')
 }

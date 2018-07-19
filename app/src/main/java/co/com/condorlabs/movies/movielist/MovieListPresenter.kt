@@ -1,11 +1,11 @@
 package co.com.condorlabs.movies.movielist
 
 /**
- * @author Oscar Gallon on 7/9/18.
+ * @author Luis Goyes on 7/19/18.
  */
-class MoviewListActivityPresenter : MoviewListContract.Presenter {
+class MovieListPresenter : MovieListContract.Presenter {
 
-    override var mView: MoviewListContract.View? = null
+    override var mView: MovieListContract.View? = null
 
     private fun onResume() {
         //valla por la peliculas

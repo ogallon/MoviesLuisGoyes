@@ -4,9 +4,9 @@ import co.com.condorlabs.movies.IBasePresenter
 import co.com.condorlabs.movies.IBaseView
 
 /**
- * @author Oscar Gallon on 7/9/18.
+ * @author Luis Goyes on 7/19/18.
  */
-interface MoviewListContract {
+interface MovieListContract {
 
     interface View : IBaseView {
 

@@ -4,9 +4,12 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import co.com.condorlabs.movies.R
 
-class MovieListActivity : AppCompatActivity(), MoviewListContract.View {
+/**
+ * @author Luis Goyes on 7/19/18.
+ */
+class MovieListActivity : AppCompatActivity(), MovieListContract.View {
 
-    private val mPresenter: MoviewListContract.Presenter = MoviewListActivityPresenter()
+    private val mPresenter: MovieListContract.Presenter = MovieListPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
