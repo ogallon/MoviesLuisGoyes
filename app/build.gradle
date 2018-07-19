@@ -51,4 +51,7 @@ dependencies {
 
     androidTestImplementation "com.android.support.test:runner:${rootProject.ext.testRunnerVersion}"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${rootProject.ext.testEspressoVersion}"
+
+    implementation project(':domain')
+    implementation project(':data')
 }
