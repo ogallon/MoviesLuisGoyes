@@ -20,4 +20,5 @@ interface IBasePresenter<T : IBaseView> : LifecycleObserver {
     fun unsubscribe() {
         mView = null
     }
+
 }

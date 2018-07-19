@@ -1,9 +1,9 @@
 apply plugin: 'com.android.application'
 
-apply plugin: 'kotlin-android-extensions'
-
 apply plugin: "kotlin-android"
 apply plugin: "kotlin-kapt"
+
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -21,6 +21,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+kapt {
+    generateStubs = true
 }
 
 dependencies {
@@ -45,10 +49,6 @@ dependencies {
 
     androidTestImplementation "com.android.support.test:runner:${rootProject.ext.testRunnerVersion}"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${rootProject.ext.testEspressoVersion}"
-
-    //Lifecycle
-    implementation "android.arch.lifecycle:extensions:${rootProject.ext.archLifecycleVersion}"
-    kapt "android.arch.lifecycle:compiler:${rootProject.ext.archLifecycleVersion}"
 
     implementation project(':domain')
     implementation project(':data')

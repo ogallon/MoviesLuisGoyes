@@ -7,9 +7,4 @@ class MovieListActivityPresenter : MovieListContract.Presenter {
 
     override var mView: MovieListContract.View? = null
 
-    private fun onResume() {
-        //valla por la peliculas
-        mView?.showMovies(arrayListOf())
-    }
-
 }
