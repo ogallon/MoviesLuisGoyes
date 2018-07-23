@@ -1,5 +1,6 @@
 package io.condorlabs.lgoyes.data.di
 
+import dagger.Module
 import dagger.Provides
 import io.condorlabs.lgoyes.data.network.endpoints.MoviesService
 import io.condorlabs.lgoyes.data.utils.*
@@ -14,6 +15,7 @@ import javax.inject.Singleton
 /**
  * @author Luis Goyes (lgoyes@condorlabs.io) on July/23/2018
  */
+@Module
 class ServiceProviderModule {
 
     @Named(BASE_OK_HTTP_CLIENT)
