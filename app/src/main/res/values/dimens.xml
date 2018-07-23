@@ -10,11 +10,13 @@
 
     <dimen name="activitydetail_titlecontainer_height">50dp</dimen>
     <dimen name="activitydetail_titlecontainer_contentheight">40dp</dimen>
-
-
-
+    <dimen name="activitydetail_overviewsubtitle_contentheight">30dp</dimen>
 
     <dimen name="activitydetail_margin_horizontal">24dp</dimen>
+    <dimen name="activitydetail_margin_vertical_small">10dp</dimen>
+    <dimen name="activitydetail_margin_vertical_tiny">3dp</dimen>
+
+
 
     <dimen name="activitydetail_favorite_size">35dp</dimen>
     <dimen name="divider_height">2dp</dimen>
