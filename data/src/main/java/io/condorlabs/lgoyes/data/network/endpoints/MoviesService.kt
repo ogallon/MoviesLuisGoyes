@@ -1,23 +1,24 @@
 package io.condorlabs.lgoyes.data.network.endpoints
 
-import io.condorlabs.lgoyes.data.models.APIMovie
 import io.condorlabs.lgoyes.data.models.APIMovieDetail
+import io.condorlabs.lgoyes.data.models.APIPopularMoviesResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  * @author Luis Goyes (lgoyes@condorlabs.io) on July/23/2018
  */
 interface MoviesService {
 
-    @GET("movie/popular?api_key={apiKey}&language={language}&page={page}")
-    fun obtainPopularMovies(@Path("apiKey") apiKey: String,
-                            @Path("language") language: String,
-                            @Path("page") page: String): Observable<List<APIMovie>>
+    @GET("movie/popular")
+    fun obtainPopularMovies(@Query("api_key") apiKey: String,
+                            @Query("language") language: String,
+                            @Query("page") page: String): Observable<APIPopularMoviesResponse>
 
-    @GET("movie/{movieId}?api_key={apiKey}&language={language}")
+    @GET("movie/{movieId}")
     fun obtainMovieDetail(@Path("movieId") movieId: String,
-                          @Path("apiKey") apiKey: String,
-                          @Path("language") language: String): Observable<APIMovieDetail>
+                          @Query("api_key") apiKey: String,
+                          @Query("language") language: String): Observable<APIMovieDetail>
 }
