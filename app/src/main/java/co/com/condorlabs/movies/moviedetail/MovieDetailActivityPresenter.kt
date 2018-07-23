@@ -21,13 +21,13 @@ class MovieDetailActivityPresenter(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun downloadMovies() {
-        mSubscriptions?.add(mObtainMovieDetailInteractor.execute("351286",
-                {
-                    Log.d("GOYES", "Detalles de la pelicula ${it.title}")
-                },
-                {
-                    ::handleException
-                }
-        ))
+//        mSubscriptions?.add(mObtainMovieDetailInteractor.execute("351286",
+//                {
+//                    Log.d("GOYES", "Detalles de la pelicula ${it.title}")
+//                },
+//                {
+//                    ::handleException
+//                }
+//        ))
     }
 }

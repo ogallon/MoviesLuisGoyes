@@ -1,5 +1,6 @@
 package io.condorlabs.lgoyes.data
 
+import io.condorlabs.lgoyes.data.models.APIMovieDetail
 import io.condorlabs.lgoyes.data.models.APIPopularMoviesResponse
 import io.condorlabs.lgoyes.data.network.endpoints.MoviesService
 import io.condorlabs.lgoyes.data.utils.BASE_URL
@@ -26,12 +27,31 @@ class ExampleUnitTest {
             .build()
 
     val movieService = retrofit.create(MoviesService::class.java)
+
     @Test
-    fun shouldGetMovies() {
+    fun shouldGetPopularMoviesList() {
         val testObserver = TestObserver<APIPopularMoviesResponse>()
 
         movieService.obtainPopularMovies(THE_MOVIE_DATABASE_API_KEY,
                 WEB_REPOSITORY_DEFAULT_LANGUAGE, "1")
+                .subscribeWith(testObserver)
+
+        testObserver.assertNoErrors()
+                .assertValueCount(1)
+                .assertComplete()
+
+        testObserver.values().get(0).results.get(1).title
+    }
+
+    @Test
+    fun shouldGetDetailMovie() {
+        val testObserver = TestObserver<APIMovieDetail>()
+        val movieId = "351286"
+
+        movieService.obtainMovieDetail(
+                movieId,
+                THE_MOVIE_DATABASE_API_KEY,
+                WEB_REPOSITORY_DEFAULT_LANGUAGE)
                 .subscribeWith(testObserver)
 
         testObserver.assertNoErrors()

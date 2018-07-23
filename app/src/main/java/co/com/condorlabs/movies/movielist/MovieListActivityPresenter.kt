@@ -23,15 +23,11 @@ class MovieListActivityPresenter(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun downloadMovies() {
-        Log.d("GOYES", "Descargando...")
-        mSubscriptions?.add(mObtainPopularMoviesInteractor.execute(null,
-                {
-                    it.results.forEach {
-                        Log.d("GOYES", "Descargue la pelicula ${it.title}")
-                    }
-                }, ::handleException,
-                { Log.d("GOYES", "Finally...") }
-        ))
-        Log.d("GOYES", "Descargando...")
+//        mSubscriptions?.add(mObtainPopularMoviesInteractor.execute(null,
+//                {
+//                    it.results.forEach {
+//                        Log.d("GOYES", "Descargue la pelicula ${it.title}")
+//                    }
+//                }, ::handleException))
     }
 }
