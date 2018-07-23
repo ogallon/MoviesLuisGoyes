@@ -2,6 +2,7 @@ package co.com.condorlabs.movies.movielist
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import co.com.condorlabs.movies.MoviesApplication
 import co.com.condorlabs.movies.R
 import javax.inject.Inject
@@ -14,11 +15,11 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View {
     lateinit var mPresenter: MovieListContract.Presenter
 
     override fun showError(error: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText( applicationContext, error, Toast.LENGTH_LONG ).show()
     }
 
     override fun showError(errorStringId: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText( applicationContext, getString( errorStringId ), Toast.LENGTH_LONG ).show()
     }
 
     override fun navigateToWithErrorType(destination: Class<*>, errorType: Int) {

@@ -33,6 +33,7 @@ ext {
     // Retrofit
     retrofitVersion = "2.4.0"
     gsonVersion = "2.8.5"
+    retrofitAdapter = '2.2.0'
 
     // Dagger 2
     dagger2Version = "2.16"
