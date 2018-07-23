@@ -40,7 +40,7 @@ class ExampleUnitTest {
                 .assertValueCount(1)
                 .assertComplete()
 
-        testObserver.values().get(0).results.get(1).title
+        testObserver.values()[0].results[0].title
     }
 
     @Test
