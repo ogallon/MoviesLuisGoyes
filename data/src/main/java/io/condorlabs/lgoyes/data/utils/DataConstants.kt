@@ -11,3 +11,5 @@ const val BASE_URL = "https://api.themoviedb.org/3/"
 const val TIMEOUT_SECONDS = 30.toLong()
 
 const val MOVIES_SERVICE = "MOVIES_SERVICE"
+
+const val DATABASE_MOVIES_TABLE_NAME = "movies"
