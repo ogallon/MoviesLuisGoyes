@@ -11,9 +11,6 @@ object APIPopularMoviesResponsePopularMoviesResponseMapper :
         Function<APIPopularMoviesResponse, PopularMoviesResponse> {
     override fun apply(t: APIPopularMoviesResponse): PopularMoviesResponse {
         return PopularMoviesResponse(
-                t.page,
-                t.totalResults,
-                t.totalPages,
                 t.results
         )
     }
