@@ -2,10 +2,7 @@ package io.condorlabs.lgoyes.data.di
 
 import dagger.Provides
 import io.condorlabs.lgoyes.data.network.endpoints.MoviesService
-import io.condorlabs.lgoyes.data.utils.BASE_OK_HTTP_CLIENT
-import io.condorlabs.lgoyes.data.utils.BASE_RETROFIT
-import io.condorlabs.lgoyes.data.utils.BASE_URL
-import io.condorlabs.lgoyes.data.utils.TIMEOUT_SECONDS
+import io.condorlabs.lgoyes.data.utils.*
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -41,6 +38,7 @@ class ServiceProviderModule {
                 .build()
     }
 
+    @Named(MOVIES_SERVICE)
     @Provides
     @Singleton
     fun provideMoviesService(@Named(BASE_RETROFIT) retrofit: Retrofit): MoviesService {

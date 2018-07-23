@@ -1,4 +1,4 @@
-package io.condorlabs.lgoyes.data.models.detail
+package io.condorlabs.lgoyes.domain.models.detailutils
 
 import com.google.gson.annotations.SerializedName
 
