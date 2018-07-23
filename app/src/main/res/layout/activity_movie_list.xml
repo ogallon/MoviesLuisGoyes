@@ -6,13 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".movielist.MovieListActivity">
 
-    <TextView
+    <android.support.constraint.Guideline
+        android:id="@+id/activitylist_guideline_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/activitylist_guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/activitylist_guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/activitylist_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="30dp"
+        android:scrollbars="vertical"
+
+        app:layout_constraintStart_toStartOf="@id/activitylist_guideline_left"
+        app:layout_constraintEnd_toStartOf="@id/activitylist_guideline_right"
+        app:layout_constraintTop_toTopOf="@id/activitylist_guideline_top"
+
+        app:layout_constraintBottom_toTopOf="@+id/activitylist_linearlayout_filters"/>
+
+    <LinearLayout
+        android:id="@+id/activitylist_linearlayout_filters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <CheckBox
+            android:id="@+id/activitylist_checkbox_votecounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_vote_couter_greater_2000"/>
+
+        <CheckBox
+            android:id="@+id/activitylist_checkbox_onlyfav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_show_only_favorite_movies"/>
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
