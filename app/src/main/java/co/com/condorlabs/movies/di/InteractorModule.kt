@@ -10,8 +10,8 @@ import io.condorlabs.lgoyes.domain.MAIN_THREAD_SCHEDULER
 import io.condorlabs.lgoyes.domain.interactors.ObtainMovieDetailInteractor
 import io.condorlabs.lgoyes.domain.interactors.ObtainPopularMoviesInteractor
 import io.condorlabs.lgoyes.domain.interactors.base.IUseCase
-import io.condorlabs.lgoyes.domain.models.Movie
 import io.condorlabs.lgoyes.domain.models.MovieDetail
+import io.condorlabs.lgoyes.domain.models.PopularMoviesResponse
 import io.condorlabs.lgoyes.domain.repositories.IWebRepository
 import io.reactivex.Scheduler
 import javax.inject.Named
@@ -37,6 +37,6 @@ class InteractorModule {
     fun providesObtainPopularMoviesInteractor(
             @Named(IO_THREAD_SCHEDULER) subscribeOnScheduler: Scheduler,
             @Named(MAIN_THREAD_SCHEDULER) observeOnScheduler: Scheduler,
-            webRepository: IWebRepository): IUseCase<List<Movie>, Any?> =
+            webRepository: IWebRepository): IUseCase<PopularMoviesResponse, Any?> =
             ObtainPopularMoviesInteractor(subscribeOnScheduler, observeOnScheduler, webRepository)
 }

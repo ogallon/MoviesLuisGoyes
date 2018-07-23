@@ -1,5 +1,6 @@
 package co.com.condorlabs.movies.utils.callbacks
 
+import android.util.Log
 import co.com.condorlabs.movies.R
 import retrofit2.HttpException
 
@@ -14,6 +15,7 @@ interface IErrorProcessor {
     fun handleException(error: Throwable) {
         when (error) {
             is HttpException -> mErrorHandler?.showError( R.string.connection_error )
+            is IllegalStateException -> Log.e(IErrorProcessor::class.java.name, error.message)
         }
     }
 }

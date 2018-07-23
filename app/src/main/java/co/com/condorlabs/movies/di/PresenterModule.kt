@@ -14,6 +14,7 @@ import io.condorlabs.lgoyes.domain.interactors.ObtainMovieDetailInteractor
 import io.condorlabs.lgoyes.domain.interactors.base.IUseCase
 import io.condorlabs.lgoyes.domain.models.Movie
 import io.condorlabs.lgoyes.domain.models.MovieDetail
+import io.condorlabs.lgoyes.domain.models.PopularMoviesResponse
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -34,7 +35,7 @@ class PresenterModule {
     @Singleton
     fun providesMovieListPresenter(
             @Named(OBTAIN_POPULAR_MOVIES_INTERACTOR)
-            mObtainPopularMoviesInteractor: IUseCase<List<Movie>, Any?>
+            mObtainPopularMoviesInteractor: IUseCase<PopularMoviesResponse, Any?>
     ): MovieListContract.Presenter =
             MovieListActivityPresenter(mObtainPopularMoviesInteractor)
 
