@@ -34,6 +34,10 @@ dependencies {
     implementation "com.android.support.constraint:constraint-layout:${rootProject.ext.constraintLayoutVersion}"
     testImplementation "junit:junit:${rootProject.ext.junitVersion}"
 
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofitVersion}"
+
     // Recyclerview
     implementation "com.android.support:recyclerview-v7:${rootProject.ext.supportLibVersion}"
 

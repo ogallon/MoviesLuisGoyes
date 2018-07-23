@@ -16,4 +16,7 @@
 
     <string name="activitydetail_favorite_description">Click here to add to favorites</string>
 
+
+    <string name="connection_error">Connection to the web server failed</string>
+
 </resources>

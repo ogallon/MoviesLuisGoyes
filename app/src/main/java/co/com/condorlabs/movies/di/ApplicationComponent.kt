@@ -10,7 +10,7 @@ import javax.inject.Singleton
  * @author Luis Goyes (lgoyes@condorlabs.io) on July/19/2018
  */
 @Singleton
-@Component(modules = [ApplicationModule::class, PresenterModule::class])
+@Component(modules = [ApplicationModule::class, PresenterModule::class, InteractorModule::class])
 interface ApplicationComponent {
     fun inject( target : SplashActivity )
 
