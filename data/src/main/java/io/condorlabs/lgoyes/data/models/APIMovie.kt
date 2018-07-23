@@ -7,7 +7,8 @@ data class APIMovie(
         val posterPath: String,
         val adult: Boolean,
         val overview: String,
-        val release_date: String,
+        @SerializedName("release_date")
+        val releaseDate: String,
         @SerializedName("genre_ids")
         val genreIds: List<Int>,
         val id: Int,

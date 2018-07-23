@@ -9,7 +9,7 @@ import io.reactivex.functions.Function
  */
 object APIMovieMovieMapper : Function<APIMovie, Movie> {
     override fun apply(t: APIMovie): Movie {
-        return Movie(t.posterPath, t.adult, t.overview, t.release_date, t.genreIds, t.id,
+        return Movie(t.posterPath, t.adult, t.overview, t.releaseDate, t.genreIds, t.id,
                 t.originalTitle, t.originalLanguage, t.title, t.backdropPath, t.popularity,
                 t.voteCount, t.video, t.voteAverage)
     }

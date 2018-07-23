@@ -13,8 +13,10 @@ import io.reactivex.Observable
  */
 class WebRepository(private val mMoviesService: MoviesService) : IWebRepository {
     override fun getListPopularMovies(apiKey: String, language: String, page: String): Observable<List<Movie>> =
-            mMoviesService.obtainPopularMovies(apiKey, language, page).map {
-
+            mMoviesService.obtainPopularMovies(apiKey, language, page).map { listmovies ->
+                listmovies.map {
+                    APIMovieMovieMapper.apply(it)
+                }
             }
 
     override fun getMovieDetails(movieId: String, apiKey: String, language: String): Observable<MovieDetail> =
