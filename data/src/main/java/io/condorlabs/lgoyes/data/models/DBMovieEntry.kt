@@ -11,7 +11,7 @@ import java.io.Serializable
 @Entity(
         tableName = DATABASE_MOVIES_TABLE_NAME
 )
-data class DBMovie (
+data class DBMovieEntry (
         @PrimaryKey
         val id: String,
         val movieId : String,

@@ -30,4 +30,9 @@ class MovieDetailActivityPresenter(
 //                }
 //        ))
     }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    fun clearSubscriptions() {
+        mSubscriptions?.clear()
+    }
 }

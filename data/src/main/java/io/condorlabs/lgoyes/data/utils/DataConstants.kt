@@ -12,5 +12,10 @@ const val TIMEOUT_SECONDS = 30.toLong()
 
 const val MOVIES_SERVICE = "MOVIES_SERVICE"
 
+/** ROOM **/
 const val DATABASE_MOVIES_TABLE_NAME = "movies"
 const val DATABASE_NAME = "movies_db"
+const val DATABASE_VERSION = 1
+
+const val BASE_ROOM = "BASE_ROOM"
+const val MOVIES_DAO = "MOVIES_DAO"
