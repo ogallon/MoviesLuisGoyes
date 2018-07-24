@@ -19,6 +19,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://jitpack.io"
+        }
     }
 }
 
@@ -54,6 +57,9 @@ ext {
     //testImpl
     testRunnerVersion = "1.0.2"
     testEspressoVersion = "3.0.2"
+
+    // Gifs
+    cuttaGifViewVersion = "1.1"
 }
 
 task clean(type: Delete) {

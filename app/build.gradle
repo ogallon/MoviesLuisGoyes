@@ -56,6 +56,8 @@ dependencies {
     // Gson
     implementation "com.google.code.gson:gson:${rootProject.ext.gsonVersion}"
 
+    implementation "com.github.Cutta:GifView:${rootProject.ext.cuttaGifViewVersion}"
+
     androidTestImplementation "com.android.support.test:runner:${rootProject.ext.testRunnerVersion}"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${rootProject.ext.testEspressoVersion}"
 
