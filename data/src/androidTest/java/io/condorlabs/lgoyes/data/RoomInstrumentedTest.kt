@@ -15,6 +15,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*
+import java.util.concurrent.TimeUnit
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -72,9 +73,10 @@ class RoomInstrumentedTest {
         val testSubscriber = TestSubscriber< List<DBMovieEntry> >()
         moviesDao.getAllMovies().subscribeWith( testSubscriber )
         testSubscriber
-                .awaitCount(1, BaseTestConsumer.TestWaitStrategy.SLEEP_1MS, 5000)
-                .assertSubscribed()
+                //.awaitCount(1, BaseTestConsumer.TestWaitStrategy.SLEEP_1MS, 5000)
+                .awaitDone(5000, TimeUnit.MILLISECONDS)
                 .assertValueCount(1)
+                .assertSubscribed()
                 .assertNoErrors()
     }
 }
