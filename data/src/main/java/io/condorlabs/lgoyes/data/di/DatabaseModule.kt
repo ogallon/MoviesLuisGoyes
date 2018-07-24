@@ -20,7 +20,7 @@ class DatabaseModule {
     @Named(BASE_ROOM)
     @Provides
     @Singleton
-    fun provideBaseRoom( context : Context ) : MoviesDatabase {
+    fun provideBaseRoom( context: Context ) : MoviesDatabase {
         val builder = Room.databaseBuilder( context, MoviesDatabase::class.java, DATABASE_NAME )
         return builder.build()
     }

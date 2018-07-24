@@ -16,5 +16,5 @@ class ApplicationModule(private val mApplicationContext : Context ){
     @Provides
     @Singleton
     @Named(BASE_CONTEXT)
-    fun provideContext() = mApplicationContext
+    fun provideContext():Context = mApplicationContext
 }
