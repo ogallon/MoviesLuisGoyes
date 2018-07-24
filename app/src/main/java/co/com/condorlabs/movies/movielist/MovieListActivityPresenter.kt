@@ -2,22 +2,19 @@ package co.com.condorlabs.movies.movielist
 
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.OnLifecycleEvent
-import android.util.Log
 import co.com.condorlabs.movies.utils.callbacks.IErrorHandler
 import io.condorlabs.lgoyes.domain.interactors.base.IUseCase
 import io.condorlabs.lgoyes.domain.models.Movie
-import io.condorlabs.lgoyes.domain.models.MovieEntry
-import io.condorlabs.lgoyes.domain.models.PopularMoviesResponse
 import io.reactivex.disposables.CompositeDisposable
 
 /**
  * @author Luis Goyes on 7/19/18.
  */
 class MovieListActivityPresenter(
-        val mObtainPopularMoviesInteractor: IUseCase<PopularMoviesResponse, Any?>,
-        val mInsertMovieEntryInteractor: IUseCase<Long, MovieEntry>,
-        val mGetAllMovieEntriesInteractor: IUseCase<List<MovieEntry>, Any?>,
-        val mDeleteMovieEntryInteractor: IUseCase<Int, MovieEntry>
+        val mObtainPopularMoviesInteractor: IUseCase<List<Movie>, Any?>,
+        val mInsertMovieEntryInteractor: IUseCase<Long, Movie>,
+        val mGetAllMovieEntriesInteractor: IUseCase<List<Movie>, Any?>,
+        val mDeleteMovieEntryInteractor: IUseCase<Int, Movie>
 ) : MovieListContract.Presenter {
 
     override var mErrorHandler: IErrorHandler? = null
@@ -37,28 +34,16 @@ class MovieListActivityPresenter(
     fun downloadStoreAndShowPopularMovies() {
         mSubscriptions?.add(mObtainPopularMoviesInteractor.execute(null,
                 {
-                    it.results.forEach {
-                        val newMovieEntry = MovieEntry(null,
-                                it.id.toString(),
-                                it.title,
-                                it.voteCount.toString(),
-                                it.posterPath,
-                                it.voteAverage.toString(),
-                                it.overview,
-                                it.releaseDate,
-                                null,
-                                null,
-                                false)
-
-                        storeMovieEntry(newMovieEntry)
+                    it.forEach {
+                        storeMovieEntry( it )
                     }
 
-                    mView?.showMovies(it.results)
+                    mView?.showMovies(it)
 
                 }, ::handleException))
     }
 
-    fun storeMovieEntry(movieEntry: MovieEntry) {
+    fun storeMovieEntry(movieEntry: Movie) {
         mSubscriptions?.add(
                 mInsertMovieEntryInteractor.execute(
                         movieEntry,
@@ -85,7 +70,7 @@ class MovieListActivityPresenter(
     }
 
     @Throws
-    fun deleteMovieEntry(movieEntry: MovieEntry) {
+    fun deleteMovieEntry(movieEntry: Movie) {
         mSubscriptions?.add(
                 mDeleteMovieEntryInteractor.execute(
                         movieEntry,

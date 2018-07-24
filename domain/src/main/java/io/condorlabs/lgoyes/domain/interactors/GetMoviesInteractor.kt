@@ -21,8 +21,8 @@ class GetMoviesInteractor(mSubscribeOnScheduler: Scheduler,
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    private fun downloadMoviesOrExtractFromDatabase(){
-        val apiResponse = mWebServiceRepository.getListPopularMovies( THE_MOVIE_DATABASE_API_KEY )
+    private fun downloadMoviesOrExtractFromDatabase() {
+        val apiResponse = mWebServiceRepository.getListPopularMovies(THE_MOVIE_DATABASE_API_KEY)
         apiResponse.map {
 
         }

@@ -1,7 +1,6 @@
 package io.condorlabs.lgoyes.data.mappers
 
 import io.condorlabs.lgoyes.data.models.APIPopularMoviesResponse
-import io.condorlabs.lgoyes.domain.models.PopularMoviesResponse
 import io.reactivex.functions.Function
 
 /**

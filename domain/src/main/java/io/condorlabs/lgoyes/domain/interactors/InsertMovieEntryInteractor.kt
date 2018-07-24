@@ -1,7 +1,7 @@
 package io.condorlabs.lgoyes.domain.interactors
 
 import io.condorlabs.lgoyes.domain.interactors.base.ObservableUseCase
-import io.condorlabs.lgoyes.domain.models.MovieEntry
+import io.condorlabs.lgoyes.domain.models.Movie
 import io.condorlabs.lgoyes.domain.repositories.ILocalRepository
 import io.reactivex.Observable
 import io.reactivex.Scheduler
@@ -12,7 +12,7 @@ import io.reactivex.Scheduler
 class InsertMovieEntryInteractor(mSubscribeOnScheduler: Scheduler,
                                  mObserveOnScheduler: Scheduler,
                                  private val mLocalRepository: ILocalRepository) :
-        ObservableUseCase<Long, MovieEntry>(mSubscribeOnScheduler, mObserveOnScheduler) {
-    override fun buildUseCase(params: MovieEntry): Observable<Long> =
+        ObservableUseCase<Long, Movie>(mSubscribeOnScheduler, mObserveOnScheduler) {
+    override fun buildUseCase(params: Movie): Observable<Long> =
             mLocalRepository.insertEntry(params)
 }

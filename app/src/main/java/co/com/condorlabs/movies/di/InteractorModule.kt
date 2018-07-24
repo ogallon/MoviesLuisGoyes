@@ -7,10 +7,7 @@ import io.condorlabs.lgoyes.data.di.RepositoryModule
 import io.condorlabs.lgoyes.domain.IO_THREAD_SCHEDULER
 import io.condorlabs.lgoyes.domain.MAIN_THREAD_SCHEDULER
 import io.condorlabs.lgoyes.domain.interactors.*
-import io.condorlabs.lgoyes.domain.interactors.base.ICompletableUseCase
 import io.condorlabs.lgoyes.domain.interactors.base.IUseCase
-import io.condorlabs.lgoyes.domain.models.MovieDetail
-import io.condorlabs.lgoyes.domain.models.PopularMoviesResponse
 import io.condorlabs.lgoyes.domain.models.MovieEntry
 import io.condorlabs.lgoyes.domain.repositories.ILocalRepository
 import io.condorlabs.lgoyes.domain.repositories.IWebRepository

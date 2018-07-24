@@ -1,31 +1,18 @@
 package io.condorlabs.lgoyes.domain.models
 
-import com.google.gson.annotations.SerializedName
-
 /**
- * @author Luis Goyes (lgoyes@condorlabs.io) on July/23/2018
+ * @author Luis Goyes (lgoyes@condorlabs.io) on July/24/2018
  */
 data class Movie (
-        @SerializedName("poster_path")
-        val posterPath: String,
-        val adult: Boolean,
-        val overview: String,
-        @SerializedName("release_date")
-        val releaseDate: String,
-        @SerializedName("genre_ids")
-        val genreIds: List<Int>,
-        val id: Int,
-        @SerializedName("original_title")
-        val originalTitle: String,
-        @SerializedName("original_language")
-        val originalLanguage: String,
-        val title: String,
-        @SerializedName("backdrop_path")
-        val backdropPath: String,
-        val popularity: Double,
-        @SerializedName("vote_count")
-        val voteCount: Int,
-        val video: Boolean,
-        @SerializedName("vote_average")
-        val voteAverage: Double
+        val databaseId: Int? = null,
+        val movieId : String,
+        val name : String,
+        val voteCount : String,
+        val posterPicturePath : String,
+        val voteAverage : String,
+        val overview : String,
+        val releaseDate : String,
+        val budget : String? = null,
+        val trailerLink : String? = null,
+        val isFavorite : Boolean? = null
 )
