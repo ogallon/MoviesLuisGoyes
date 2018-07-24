@@ -7,7 +7,9 @@ import io.condorlabs.lgoyes.data.database.MoviesDatabase
 import io.condorlabs.lgoyes.data.models.DBMovieEntry
 import io.condorlabs.lgoyes.data.utils.DATABASE_NAME
 import io.reactivex.Observable
+import io.reactivex.observers.BaseTestConsumer
 import io.reactivex.observers.TestObserver
+import io.reactivex.subscribers.TestSubscriber
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -67,12 +69,12 @@ class RoomInstrumentedTest {
                 .build()
         val moviesDao = database.getMoviesDao()
 
-        val testObserver = TestObserver<Long>()
-        moviesDao.getAllMovies().subscribeWith(testObserver)
-
-        testObserver.assertNoErrors()
+        val testSubscriber = TestSubscriber< List<DBMovieEntry> >()
+        moviesDao.getAllMovies().subscribeWith( testSubscriber )
+        testSubscriber
+                .awaitCount(1, BaseTestConsumer.TestWaitStrategy.SLEEP_1MS, 5000)
+                .assertSubscribed()
                 .assertValueCount(1)
-                .assertComplete()
-        //moviesDao.getAllMovies().subscribeWith( testObserver)
+                .assertNoErrors()
     }
 }
