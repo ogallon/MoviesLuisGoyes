@@ -30,4 +30,9 @@ class MovieListActivityPresenter(
 //                    }
 //                }, ::handleException))
     }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    fun clearSubscriptions() {
+        mSubscriptions?.clear()
+    }
 }
