@@ -1,8 +1,8 @@
 package co.com.condorlabs.movies.splash
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import co.com.condorlabs.movies.MoviesApplication
 import co.com.condorlabs.movies.R
@@ -17,9 +17,9 @@ class SplashActivity : AppCompatActivity(), SplashContract.View {
 
     override fun navigateTo(destination: Class<*>, arguments: Bundle?) {
         clSplash?.postDelayed({
-            startActivity( Intent(this, destination).apply {
+            startActivity(Intent(this, destination).apply {
                 arguments?.let {
-                    putExtras( it )
+                    putExtras(it)
                 }
             })
             finish()
@@ -27,11 +27,11 @@ class SplashActivity : AppCompatActivity(), SplashContract.View {
     }
 
     override fun showError(error: String) {
-        Toast.makeText( applicationContext, error, Toast.LENGTH_LONG ).show()
+        Toast.makeText(applicationContext, error, Toast.LENGTH_LONG).show()
     }
 
     override fun showError(errorStringId: Int) {
-        Toast.makeText( applicationContext, getString( errorStringId ), Toast.LENGTH_LONG ).show()
+        Toast.makeText(applicationContext, getString(errorStringId), Toast.LENGTH_LONG).show()
     }
 
     override fun navigateToWithErrorType(destination: Class<*>, errorType: Int) {
@@ -43,7 +43,7 @@ class SplashActivity : AppCompatActivity(), SplashContract.View {
         setContentView(R.layout.activity_splash)
 
         (application as MoviesApplication).getComponent().inject(this)
-        lifecycle.addObserver( mPresenter )
-        mPresenter.bind( this )
+        lifecycle.addObserver(mPresenter)
+        mPresenter.bind(this)
     }
 }

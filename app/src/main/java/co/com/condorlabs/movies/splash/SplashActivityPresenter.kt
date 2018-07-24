@@ -2,7 +2,6 @@ package co.com.condorlabs.movies.splash
 
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.OnLifecycleEvent
-import co.com.condorlabs.movies.moviedetail.MovieDetailActivity
 import co.com.condorlabs.movies.movielist.MovieListActivity
 import co.com.condorlabs.movies.utils.callbacks.IErrorHandler
 import io.reactivex.disposables.CompositeDisposable
@@ -22,7 +21,7 @@ class SplashActivityPresenter : SplashContract.Presenter {
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    fun setupJumpTimer(){
-        mView?.navigateTo( MovieListActivity::class.java )
+    fun setupJumpTimer() {
+        mView?.navigateTo(MovieListActivity::class.java)
     }
 }
