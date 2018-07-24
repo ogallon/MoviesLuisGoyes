@@ -7,7 +7,6 @@ import io.condorlabs.lgoyes.data.database.MoviesDatabase
 import io.condorlabs.lgoyes.data.models.DBMovieEntry
 import io.condorlabs.lgoyes.data.utils.DATABASE_NAME
 import io.reactivex.Observable
-import io.reactivex.observers.BaseTestConsumer
 import io.reactivex.observers.TestObserver
 import io.reactivex.subscribers.TestSubscriber
 
@@ -79,4 +78,54 @@ class RoomInstrumentedTest {
                 .assertSubscribed()
                 .assertNoErrors()
     }
+
+    @Test
+    fun shouldRemoveEntry() {
+        val appContext = InstrumentationRegistry.getTargetContext()
+
+        val database = Room.databaseBuilder(appContext, MoviesDatabase::class.java, DATABASE_NAME)
+                .fallbackToDestructiveMigration()
+                .build()
+        val moviesDao = database.getMoviesDao()
+
+        val testSubscriber = TestSubscriber< List<DBMovieEntry> >()
+        moviesDao.getAllMovies().subscribeWith( testSubscriber )
+
+        testSubscriber.awaitDone(5000, TimeUnit.MILLISECONDS)
+
+        val rawMovieEntry = testSubscriber.values()[0][0]
+
+        val testObserver = TestObserver<Int>()
+        Observable.just(moviesDao.deleteMovie( rawMovieEntry )).subscribeWith(testObserver)
+        testObserver.assertNoErrors()
+                .assertValueCount(1)
+                .assertComplete()
+    }
+
+    @Test
+    fun shouldUpdateEntry() {
+        val appContext = InstrumentationRegistry.getTargetContext()
+
+        val database = Room.databaseBuilder(appContext, MoviesDatabase::class.java, DATABASE_NAME)
+                .fallbackToDestructiveMigration()
+                .build()
+        val moviesDao = database.getMoviesDao()
+
+        val testSubscriber = TestSubscriber< List<DBMovieEntry> >()
+        moviesDao.getAllMovies().subscribeWith( testSubscriber )
+
+        testSubscriber.awaitDone(5000, TimeUnit.MILLISECONDS)
+
+        val rawMovieEntry = testSubscriber.values()[0][0]
+
+        rawMovieEntry.name = "Otro"
+
+        val testObserver = TestObserver<Int>()
+        Observable.just(moviesDao.updateMovie( rawMovieEntry )).subscribeWith(testObserver)
+        testObserver.assertNoErrors()
+                .assertValueCount(1)
+                .assertComplete()
+    }
+
+
 }
