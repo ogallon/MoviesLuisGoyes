@@ -11,7 +11,7 @@ import io.condorlabs.lgoyes.domain.interactors.base.ICompletableUseCase
 import io.condorlabs.lgoyes.domain.interactors.base.IUseCase
 import io.condorlabs.lgoyes.domain.models.MovieDetail
 import io.condorlabs.lgoyes.domain.models.PopularMoviesResponse
-import io.condorlabs.lgoyes.domain.models.detailutils.MovieEntry
+import io.condorlabs.lgoyes.domain.models.MovieEntry
 import io.condorlabs.lgoyes.domain.repositories.ILocalRepository
 import io.condorlabs.lgoyes.domain.repositories.IWebRepository
 import io.reactivex.Scheduler
@@ -47,7 +47,7 @@ class InteractorModule {
     fun providesDeleteMovieEntryInteractor(
             @Named(IO_THREAD_SCHEDULER) subscribeOnScheduler: Scheduler,
             @Named(MAIN_THREAD_SCHEDULER) observeOnScheduler: Scheduler,
-            localRepository: ILocalRepository): ICompletableUseCase<MovieEntry> =
+            localRepository: ILocalRepository): IUseCase<Int,MovieEntry> =
             DeleteMovieEntryInteractor(subscribeOnScheduler, observeOnScheduler, localRepository)
 
     @Singleton
@@ -65,7 +65,7 @@ class InteractorModule {
     fun providesInsertMovieEntryInteractor(
             @Named(IO_THREAD_SCHEDULER) subscribeOnScheduler: Scheduler,
             @Named(MAIN_THREAD_SCHEDULER) observeOnScheduler: Scheduler,
-            localRepository: ILocalRepository): ICompletableUseCase<MovieEntry> =
+            localRepository: ILocalRepository): IUseCase<Long,MovieEntry> =
             InsertMovieEntryInteractor(subscribeOnScheduler, observeOnScheduler, localRepository)
 
     @Singleton
@@ -74,6 +74,6 @@ class InteractorModule {
     fun providesUpdateMovieEntryInteractor(
             @Named(IO_THREAD_SCHEDULER) subscribeOnScheduler: Scheduler,
             @Named(MAIN_THREAD_SCHEDULER) observeOnScheduler: Scheduler,
-            localRepository: ILocalRepository): ICompletableUseCase<MovieEntry> =
+            localRepository: ILocalRepository): IUseCase<Int,MovieEntry> =
             UpdateMovieEntryInteractor(subscribeOnScheduler, observeOnScheduler, localRepository)
 }

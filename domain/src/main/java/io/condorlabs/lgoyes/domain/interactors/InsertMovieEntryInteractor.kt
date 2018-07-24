@@ -1,9 +1,9 @@
 package io.condorlabs.lgoyes.domain.interactors
 
-import io.condorlabs.lgoyes.domain.interactors.base.CompletableUseCase
-import io.condorlabs.lgoyes.domain.models.detailutils.MovieEntry
+import io.condorlabs.lgoyes.domain.interactors.base.ObservableUseCase
+import io.condorlabs.lgoyes.domain.models.MovieEntry
 import io.condorlabs.lgoyes.domain.repositories.ILocalRepository
-import io.reactivex.Completable
+import io.reactivex.Observable
 import io.reactivex.Scheduler
 
 /**
@@ -12,7 +12,7 @@ import io.reactivex.Scheduler
 class InsertMovieEntryInteractor(mSubscribeOnScheduler: Scheduler,
                                  mObserveOnScheduler: Scheduler,
                                  private val mLocalRepository: ILocalRepository) :
-        CompletableUseCase<MovieEntry>(mSubscribeOnScheduler, mObserveOnScheduler) {
-    override fun buildUseCase(params: MovieEntry): Completable =
+        ObservableUseCase<Long, MovieEntry>(mSubscribeOnScheduler, mObserveOnScheduler) {
+    override fun buildUseCase(params: MovieEntry): Observable<Long> =
             mLocalRepository.insertEntry(params)
 }

@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  *
  * @see [Testing documentation](http://d.android.com/tools/testing)
  */
-class ExampleUnitTest {
+class RetrofitUnitTests {
 
     val retrofit = Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

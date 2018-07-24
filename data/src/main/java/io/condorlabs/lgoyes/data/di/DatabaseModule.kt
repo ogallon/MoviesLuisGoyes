@@ -22,6 +22,7 @@ class DatabaseModule {
     @Singleton
     fun provideBaseRoom( context: Context ) : MoviesDatabase {
         val builder = Room.databaseBuilder( context, MoviesDatabase::class.java, DATABASE_NAME )
+                .fallbackToDestructiveMigration()
         return builder.build()
     }
 

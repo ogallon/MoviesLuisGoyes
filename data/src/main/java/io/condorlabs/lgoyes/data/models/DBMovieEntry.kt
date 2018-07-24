@@ -11,17 +11,18 @@ import java.io.Serializable
 @Entity(
         tableName = DATABASE_MOVIES_TABLE_NAME
 )
-data class DBMovieEntry (
-        @PrimaryKey
-        val id: String,
-        val movieId : String,
-        val name : String,
-        val voteCount : String,
-        val posterPicturePath : String,
-        val voteAverage : String,
-        val overview : String,
-        val releaseDate : String,
-        val budget : String? = null,
-        val trailerLink : String? = null,
-        val isFavorite : Boolean = false
-) : Serializable
+data class DBMovieEntry(
+        var movieId: String,
+        var name: String,
+        var voteCount: String,
+        var posterPicturePath: String,
+        var voteAverage: String,
+        var overview: String,
+        var releaseDate: String,
+        var budget: String? = null,
+        var trailerLink: String? = null,
+        var isFavorite: Boolean = false
+) : Serializable {
+    @PrimaryKey(autoGenerate = true)
+    var id: Int? = null
+}

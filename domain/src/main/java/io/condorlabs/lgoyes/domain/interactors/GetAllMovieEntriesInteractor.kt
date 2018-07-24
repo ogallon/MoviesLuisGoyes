@@ -1,7 +1,7 @@
 package io.condorlabs.lgoyes.domain.interactors
 
 import io.condorlabs.lgoyes.domain.interactors.base.FlowableUseCase
-import io.condorlabs.lgoyes.domain.models.detailutils.MovieEntry
+import io.condorlabs.lgoyes.domain.models.MovieEntry
 import io.condorlabs.lgoyes.domain.repositories.ILocalRepository
 import io.reactivex.Flowable
 import io.reactivex.Scheduler
