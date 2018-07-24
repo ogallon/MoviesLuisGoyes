@@ -1,10 +1,13 @@
 package co.com.condorlabs.movies.splash
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import co.com.condorlabs.movies.MoviesApplication
 import co.com.condorlabs.movies.R
+import co.com.condorlabs.movies.utils.SPLASH_TIMEOUT
+import kotlinx.android.synthetic.main.activity_splash.*
 import javax.inject.Inject
 
 class SplashActivity : AppCompatActivity(), SplashContract.View {
@@ -13,7 +16,14 @@ class SplashActivity : AppCompatActivity(), SplashContract.View {
     lateinit var mPresenter: SplashContract.Presenter
 
     override fun navigateTo(destination: Class<*>, arguments: Bundle?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        clSplash?.postDelayed({
+            startActivity( Intent(this, destination).apply {
+                arguments?.let {
+                    putExtras( it )
+                }
+            })
+            finish()
+        }, SPLASH_TIMEOUT)
     }
 
     override fun showError(error: String) {

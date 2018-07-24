@@ -14,3 +14,6 @@ const val INSERT_MOVIE_ENTRY_INTERACTOR = "insert_movie_entry_interactor"
 const val UPDATE_MOVIE_ENTRY_INTERACTOR = "update_movie_entry_interactor"
 
 const val BASE_CONTEXT = "base_context"
+
+/** SPLASH **/
+const val SPLASH_TIMEOUT : Long = 1500

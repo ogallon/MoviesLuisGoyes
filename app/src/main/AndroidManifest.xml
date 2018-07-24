@@ -12,15 +12,15 @@
         android:supportsRtl="true"
         android:name=".MoviesApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".movielist.MovieListActivity">
+        <activity android:name=".movielist.MovieListActivity"/>
+        <activity android:name=".moviedetail.MovieDetailActivity" />
+        <activity android:name=".splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".moviedetail.MovieDetailActivity" />
-        <activity android:name=".splash.SplashActivity" />
     </application>
 
 </manifest>
