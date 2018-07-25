@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.AppCompatImageView
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import co.com.condorlabs.movies.MoviesApplication
 import co.com.condorlabs.movies.R
