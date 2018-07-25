@@ -27,7 +27,7 @@ class InteractorModule {
             @Named(IO_THREAD_SCHEDULER) subscribeOnScheduler: Scheduler,
             @Named(MAIN_THREAD_SCHEDULER) observeOnScheduler: Scheduler,
             webRepository: IWebRepository): IUseCase<MovieDetail, String> =
-            ObtainMovieDetailInteractor(subscribeOnScheduler, observeOnScheduler, webRepository)
+            ObtainMovieBudgetInteractor(subscribeOnScheduler, observeOnScheduler, webRepository)
 
     @Singleton
     @Provides

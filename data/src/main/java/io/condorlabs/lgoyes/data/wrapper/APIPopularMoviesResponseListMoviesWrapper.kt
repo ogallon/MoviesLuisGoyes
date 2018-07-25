@@ -10,6 +10,8 @@ import io.reactivex.functions.Function
 object APIPopularMoviesResponseListMoviesWrapper :
         Function<APIPopularMoviesResponse, List<Movie>> {
     override fun apply(t: APIPopularMoviesResponse): List<Movie> {
-        return t.results
+        return t.results.map {
+            APIMovieMovieWrapper.apply(it)
+        }
     }
 }
