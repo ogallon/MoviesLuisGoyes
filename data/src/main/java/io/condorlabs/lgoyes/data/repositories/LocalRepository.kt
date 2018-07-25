@@ -12,6 +12,16 @@ import io.reactivex.Observable
  * @author Luis Goyes (lgoyes@condorlabs.io) on July/24/2018
  */
 class LocalRepository(private val mMoviesDao: IMoviesDao) : ILocalRepository {
+    override fun insertEntries(movies: List<Movie>): Observable<Long> {
+        return movies.map {
+            MovieDBMovieEntryWrapper.apply( it )
+        }.let {
+            Observable.just(
+                    mMoviesDao.insertMovies( it )
+            )
+        }
+    }
+
     override fun getEntry(id: Int): Flowable<Movie> {
         val entry = mMoviesDao.getMovie(id)
         return entry.map {

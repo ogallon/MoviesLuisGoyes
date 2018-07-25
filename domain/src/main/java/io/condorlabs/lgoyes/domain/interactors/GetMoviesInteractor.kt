@@ -17,15 +17,10 @@ class GetMoviesInteractor(mSubscribeOnScheduler: Scheduler,
                           private val mLocalRepository: ILocalRepository)
     : ObservableUseCase<List<Movie>, Any?>(mSubscribeOnScheduler, mObserveOnScheduler) {
 
-    override fun buildUseCase(params: Any?): Observable<List<Movie>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    private fun downloadMoviesOrExtractFromDatabase() {
-        val apiResponse = mWebServiceRepository.getListPopularMovies(THE_MOVIE_DATABASE_API_KEY)
-        apiResponse.map {
-
-        }
-    }
-
+    override fun buildUseCase(params: Any?): Observable<List<Movie>> = mWebServiceRepository
+            .getListPopularMovies(THE_MOVIE_DATABASE_API_KEY)
+            .doOnNext {
+                mLocalRepository.insertEntries(it)
+            }
+            .onErrorResumeNext(mLocalRepository.getAllEntries().toObservable())
 }

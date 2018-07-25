@@ -16,6 +16,9 @@ interface IMoviesDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     fun insertMovie(movieEntry: DBMovieEntry) : Long
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertMovies(movieEntries: List<DBMovieEntry>) : Long
+
     @Delete
     fun deleteMovie(movieEntry: DBMovieEntry) : Int
 
