@@ -22,7 +22,6 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View, MovieItem
                 putExtras(it)
             }
         } )
-        finish()
     }
 
     override fun onItemClicked( position:Int) {

@@ -190,6 +190,7 @@
 
             <TextView
                 android:id="@+id/tv_activitydetail_watchtrailer"
+                android:visibility="gone"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/activitydetail_overviewsubtitle_contentheight"
                 android:layout_marginEnd="@dimen/activitydetail_margin_horizontal"

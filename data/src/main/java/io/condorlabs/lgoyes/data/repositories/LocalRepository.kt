@@ -22,8 +22,8 @@ class LocalRepository(private val mMoviesDao: IMoviesDao) : ILocalRepository {
         }
     }
 
-    override fun getEntry(id: Int): Flowable<Movie> {
-        val entry = mMoviesDao.getMovie(id)
+    override fun getEntry(movieId: Int): Flowable<Movie> {
+        val entry = mMoviesDao.getMovie(movieId)
         return entry.map {
             DBMovieEntryMovieWrapper.apply(it)
         }

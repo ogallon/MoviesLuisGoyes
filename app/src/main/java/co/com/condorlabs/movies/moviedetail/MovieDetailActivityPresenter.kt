@@ -4,7 +4,7 @@ import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.OnLifecycleEvent
 import android.os.Bundle
 import co.com.condorlabs.movies.utils.EXTRA_MOVIE_ID
-import co.com.condorlabs.movies.utils.GET_MOVIE_EXTRAS_INTERACTOR
+import co.com.condorlabs.movies.utils.GET_FULL_MOVIE_INTERACTOR
 import co.com.condorlabs.movies.utils.callbacks.IErrorHandler
 import io.condorlabs.lgoyes.domain.interactors.base.IUseCase
 import io.condorlabs.lgoyes.domain.models.Movie
@@ -15,7 +15,7 @@ import javax.inject.Named
  * @author Luis Goyes on 7/19/18.
  */
 class MovieDetailActivityPresenter(
-        @Named(GET_MOVIE_EXTRAS_INTERACTOR) getMovieExtrasInteractor: IUseCase<Movie, Movie>
+        @Named(GET_FULL_MOVIE_INTERACTOR) private val getFullMovieInteractor: IUseCase<Movie, String>
 ) : MovieDetailContract.Presenter {
 
 
@@ -27,7 +27,17 @@ class MovieDetailActivityPresenter(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun loadData() {
-
+        movieId?.let {
+            mSubscriptions?.add(
+                    getFullMovieInteractor.execute(
+                            movieId!!,
+                            {
+                                mView?.drawView( it )
+                            },
+                            ::handleException
+                    )
+            )
+        }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
