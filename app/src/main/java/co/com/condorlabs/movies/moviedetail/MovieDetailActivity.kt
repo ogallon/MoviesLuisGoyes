@@ -1,7 +1,9 @@
 package co.com.condorlabs.movies.moviedetail
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import co.com.condorlabs.movies.MoviesApplication
 import co.com.condorlabs.movies.R
 import javax.inject.Inject
@@ -14,15 +16,16 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailContract.View{
     lateinit var mPresenter: MovieDetailContract.Presenter
 
     override fun showError(error: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText( applicationContext, error, Toast.LENGTH_LONG ).show()
     }
 
     override fun showError(errorStringId: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText( applicationContext, getString( errorStringId ), Toast.LENGTH_LONG ).show()
     }
 
     override fun navigateToWithErrorType(destination: Class<*>, errorType: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        startActivity(Intent(this, destination))
+        finish()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

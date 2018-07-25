@@ -1,5 +1,6 @@
 package co.com.condorlabs.movies.movielist
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.AppCompatImageView
@@ -17,7 +18,8 @@ import javax.inject.Inject
  */
 class MovieListActivity : AppCompatActivity(), MovieListContract.View {
     override fun initializeAdapter(movies: List<Movie>) {
-        rv_activitylist_list_movies?.adapter =
+        TODO("Waiting for adapter definition")
+//        rv_activitylist_list_movies?.adapter =
     }
 
     override fun startLoadingAnimation() {
@@ -42,7 +44,8 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View {
     }
 
     override fun navigateToWithErrorType(destination: Class<*>, errorType: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        startActivity(Intent(this, destination))
+        finish()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -35,7 +35,8 @@ class SplashActivity : AppCompatActivity(), SplashContract.View {
     }
 
     override fun navigateToWithErrorType(destination: Class<*>, errorType: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        startActivity(Intent(this, destination))
+        finish()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
