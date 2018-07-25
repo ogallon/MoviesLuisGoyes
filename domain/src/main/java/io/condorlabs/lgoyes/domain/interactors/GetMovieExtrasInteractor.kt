@@ -18,7 +18,7 @@ class GetMovieExtrasInteractor(mSubscribeOnScheduler: Scheduler,
     : ObservableUseCase<Movie, Movie>(mSubscribeOnScheduler, mObserveOnScheduler) {
     override fun buildUseCase(params: Movie): Observable<Movie> = mWebServiceRepository
             .getMovieBudget(params, THE_MOVIE_DATABASE_API_KEY)
-            .doOnNext { movieWithBudget ->
+            .flatMap { movieWithBudget ->
                 mWebServiceRepository
                         .getMovieTrailer(movieWithBudget, THE_MOVIE_DATABASE_API_KEY)
                         .doOnNext { movieWithBudgetAndTrailer->

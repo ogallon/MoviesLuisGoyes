@@ -7,6 +7,7 @@ import co.com.condorlabs.movies.movielist.MovieListContract
 import co.com.condorlabs.movies.splash.SplashActivityPresenter
 import co.com.condorlabs.movies.splash.SplashContract
 import co.com.condorlabs.movies.utils.GET_MOVIES_INTERACTOR
+import co.com.condorlabs.movies.utils.GET_MOVIE_EXTRAS_INTERACTOR
 import dagger.Module
 import dagger.Provides
 import io.condorlabs.lgoyes.domain.interactors.base.IUseCase
@@ -22,9 +23,9 @@ class PresenterModule {
     @Provides
     @Singleton
     fun providesMovieDetailPresenter(
-
+            @Named(GET_MOVIE_EXTRAS_INTERACTOR) getMovieExtrasInteractor : IUseCase<Movie, Movie>
     ): MovieDetailContract.Presenter =
-            MovieDetailActivityPresenter()
+            MovieDetailActivityPresenter(getMovieExtrasInteractor)
 
     @Provides
     @Singleton
