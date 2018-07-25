@@ -15,10 +15,25 @@ import javax.inject.Inject
 /**
  * @author Luis Goyes on 7/19/18.
  */
-class MovieListActivity : AppCompatActivity(), MovieListContract.View {
+class MovieListActivity : AppCompatActivity(), MovieListContract.View, MovieItemAdapter.IAdapterItemClick {
+    override fun navigateTo(destination: Class<*>, arguments: Bundle?) {
+        startActivity( Intent(this, destination).apply {
+            arguments?.let {
+                putExtras(it)
+            }
+        } )
+        finish()
+    }
+
+    override fun onItemClicked( position:Int) {
+        mPresenter.recyclerViewItemClicked( position )
+    }
+
+    @Inject
+    lateinit var mPresenter: MovieListContract.Presenter
 
     override fun initializeAdapter(movies: List<Movie>) {
-        rv_activitylist_list_movies?.adapter = MovieItemAdapter(movies)
+        rv_activitylist_list_movies?.adapter = MovieItemAdapter( this, movies)
     }
 
     override fun startLoadingAnimation() {
@@ -30,9 +45,6 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View {
         gif_activitylist_saitamaloading?.visibility = View.GONE
         gif_activitylist_saitamaloading?.pause()
     }
-
-    @Inject
-    lateinit var mPresenter: MovieListContract.Presenter
 
     override fun showError(error: String) {
         Toast.makeText(applicationContext, error, Toast.LENGTH_LONG).show()
@@ -62,4 +74,6 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View {
                         false
                 )
     }
+
+
 }

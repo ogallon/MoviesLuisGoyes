@@ -11,3 +11,6 @@ const val POSTER_ENDPOINT = "http://image.tmdb.org/t/p/w185/"
 
 /** SPLASH **/
 const val SPLASH_TIMEOUT: Long = 1500
+
+/** EXTRAS KEYS **/
+const val EXTRA_MOVIE_ID = "extra_movie_id"

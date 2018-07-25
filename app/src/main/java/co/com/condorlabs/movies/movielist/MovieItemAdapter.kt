@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.movie_item.view.*
 /**
  * @author Luis Goyes (lgoyes@condorlabs.io) on July/25/2018
  */
-class MovieItemAdapter(val movies: List<Movie>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MovieItemAdapter(private val clickListener: IAdapterItemClick, val movies: List<Movie>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val movieItemView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.movie_item, parent, false)
@@ -34,13 +34,19 @@ class MovieItemAdapter(val movies: List<Movie>) : RecyclerView.Adapter<RecyclerV
                     .load(POSTER_ENDPOINT + movies[position].posterPicturePath)
                     .into(it)
         }
-        //movieHolder.viewPosterPicture.drawable
+        holder.itemView?.setOnClickListener {
+            clickListener.onItemClicked( position )
+        }
     }
 
     internal class MovieItemViewHolder(emptyLayout: View) : RecyclerView.ViewHolder(emptyLayout) {
         var viewPosterPicture = emptyLayout.iv_activitylist_recyclerviewitem
         var viewMovieTitle = emptyLayout.tv_activitylist_recyclerviewitem_title
         var viewVoteAverage = emptyLayout.tv_activitylist_recyclerviewitem_voteaverage
+    }
+
+    interface IAdapterItemClick {
+        fun onItemClicked( position : Int)
     }
 }
 
