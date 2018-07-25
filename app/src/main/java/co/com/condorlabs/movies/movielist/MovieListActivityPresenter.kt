@@ -18,10 +18,10 @@ class MovieListActivityPresenter(
         private val getMoviesInteractor: IUseCase<List<Movie>, Any?>
 ) : MovieListContract.Presenter {
     override fun recyclerViewItemClicked(position: Int) {
-        mView?.navigateTo( MovieDetailActivity::class.java,
+        mView?.navigateTo(MovieDetailActivity::class.java,
                 Bundle().apply {
                     movies?.get(position)?.let {
-                        putString(EXTRA_MOVIE_ID, it.movieId )
+                        putString(EXTRA_MOVIE_ID, it.movieId)
                     }
                 })
     }
@@ -31,7 +31,7 @@ class MovieListActivityPresenter(
 
     private val mSubscriptions: CompositeDisposable? = CompositeDisposable()
 
-    var movies : List<Movie>? = null
+    var movies: List<Movie>? = null
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     override fun loadData() {
