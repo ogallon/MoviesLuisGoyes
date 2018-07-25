@@ -15,7 +15,7 @@ interface ILocalRepository {
 
     fun insertEntry(movie: Movie): Observable<Long>
 
-    fun insertEntries(movies: List<Movie>): Observable<Long>
+    fun insertEntries(movies: List<Movie>): Observable<Array<Long>>
 
     fun deleteEntry(movie: Movie): Observable<Int>
 

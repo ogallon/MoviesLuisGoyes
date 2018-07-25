@@ -12,7 +12,7 @@ import io.reactivex.Observable
  * @author Luis Goyes (lgoyes@condorlabs.io) on July/24/2018
  */
 class LocalRepository(private val mMoviesDao: IMoviesDao) : ILocalRepository {
-    override fun insertEntries(movies: List<Movie>): Observable<Long> {
+    override fun insertEntries(movies: List<Movie>): Observable<Array<Long>> {
         return movies.map {
             MovieDBMovieEntryWrapper.apply( it )
         }.let {

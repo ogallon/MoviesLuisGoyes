@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import co.com.condorlabs.movies.MoviesApplication
 import co.com.condorlabs.movies.R
+import io.condorlabs.lgoyes.domain.models.Movie
 import kotlinx.android.synthetic.main.activity_movie_list.*
 import javax.inject.Inject
 

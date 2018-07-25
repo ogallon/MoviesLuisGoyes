@@ -15,6 +15,5 @@ import javax.inject.Singleton
 class ApplicationModule(private val mApplicationContext : Context ){
     @Provides
     @Singleton
-    @Named(BASE_CONTEXT)
     fun provideContext():Context = mApplicationContext
 }

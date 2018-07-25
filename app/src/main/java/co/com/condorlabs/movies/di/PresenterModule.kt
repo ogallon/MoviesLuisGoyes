@@ -6,11 +6,11 @@ import co.com.condorlabs.movies.movielist.MovieListActivityPresenter
 import co.com.condorlabs.movies.movielist.MovieListContract
 import co.com.condorlabs.movies.splash.SplashActivityPresenter
 import co.com.condorlabs.movies.splash.SplashContract
-import co.com.condorlabs.movies.utils.OBTAIN_MOVIE_DETAIL_INTERACTOR
-import co.com.condorlabs.movies.utils.OBTAIN_POPULAR_MOVIES_INTERACTOR
+import co.com.condorlabs.movies.utils.GET_MOVIES_INTERACTOR
 import dagger.Module
 import dagger.Provides
 import io.condorlabs.lgoyes.domain.interactors.base.IUseCase
+import io.condorlabs.lgoyes.domain.models.Movie
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -22,18 +22,16 @@ class PresenterModule {
     @Provides
     @Singleton
     fun providesMovieDetailPresenter(
-            @Named(OBTAIN_MOVIE_DETAIL_INTERACTOR)
-            mObtainMovieDetailInteractor: IUseCase<MovieDetail, String>
+
     ): MovieDetailContract.Presenter =
-            MovieDetailActivityPresenter(mObtainMovieDetailInteractor)
+            MovieDetailActivityPresenter()
 
     @Provides
     @Singleton
     fun providesMovieListPresenter(
-            @Named(OBTAIN_POPULAR_MOVIES_INTERACTOR)
-            mObtainPopularMoviesInteractor: IUseCase<PopularMoviesResponse, Any?>
+            @Named(GET_MOVIES_INTERACTOR) getMoviesInteractor: IUseCase<List<Movie>, Any?>
     ): MovieListContract.Presenter =
-            MovieListActivityPresenter(mObtainPopularMoviesInteractor)
+            MovieListActivityPresenter(getMoviesInteractor)
 
     @Provides
     @Singleton

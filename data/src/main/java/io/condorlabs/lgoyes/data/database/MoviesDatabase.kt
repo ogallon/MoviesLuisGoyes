@@ -8,7 +8,7 @@ import io.condorlabs.lgoyes.data.utils.DATABASE_VERSION
 /**
  * @author Luis Goyes (lgoyes@condorlabs.io) on July/24/2018
  */
-@Database(entities = [DBMovieEntry::class], version = DATABASE_VERSION)
+@Database(entities = [DBMovieEntry::class], version = DATABASE_VERSION, exportSchema = false)
 abstract class MoviesDatabase : RoomDatabase() {
     abstract fun getMoviesDao() : IMoviesDao
 }
