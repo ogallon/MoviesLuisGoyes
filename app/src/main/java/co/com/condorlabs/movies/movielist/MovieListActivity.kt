@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.AppCompatImageView
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
 import co.com.condorlabs.movies.MoviesApplication
@@ -18,8 +19,7 @@ import javax.inject.Inject
  */
 class MovieListActivity : AppCompatActivity(), MovieListContract.View {
     override fun initializeAdapter(movies: List<Movie>) {
-        TODO("Waiting for adapter definition")
-//        rv_activitylist_list_movies?.adapter =
+        rv_activitylist_list_movies?.adapter = MovieItemAdapter(movies)
     }
 
     override fun startLoadingAnimation() {
@@ -36,11 +36,11 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View {
     lateinit var mPresenter: MovieListContract.Presenter
 
     override fun showError(error: String) {
-        Toast.makeText( applicationContext, error, Toast.LENGTH_LONG ).show()
+        Toast.makeText(applicationContext, error, Toast.LENGTH_LONG).show()
     }
 
     override fun showError(errorStringId: Int) {
-        Toast.makeText( applicationContext, getString( errorStringId ), Toast.LENGTH_LONG ).show()
+        Toast.makeText(applicationContext, getString(errorStringId), Toast.LENGTH_LONG).show()
     }
 
     override fun navigateToWithErrorType(destination: Class<*>, errorType: Int) {
@@ -55,5 +55,12 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View {
         (application as MoviesApplication).getComponent().inject(this)
         lifecycle.addObserver(mPresenter)
         mPresenter.bind(this)
+
+        rv_activitylist_list_movies?.layoutManager =
+                LinearLayoutManager(
+                        this,
+                        LinearLayoutManager.VERTICAL,
+                        false
+                )
     }
 }
