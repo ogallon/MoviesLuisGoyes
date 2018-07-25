@@ -2,10 +2,13 @@ package co.com.condorlabs.movies.movielist
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.AppCompatImageView
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import co.com.condorlabs.movies.MoviesApplication
 import co.com.condorlabs.movies.R
+import co.com.condorlabs.movies.utils.loadImageFromURL
 import io.condorlabs.lgoyes.domain.models.Movie
 import kotlinx.android.synthetic.main.activity_movie_list.*
 import javax.inject.Inject
@@ -26,6 +29,8 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View {
     override fun stopLoadingAnimation() {
         gif_activitylist_saitamaloading?.visibility = View.GONE
         gif_activitylist_saitamaloading?.pause()
+
+        val iv = AppCompatImageView( this ).loadImageFromURL("")
     }
 
     @Inject
