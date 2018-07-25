@@ -60,6 +60,9 @@ ext {
 
     // Gifs
     cuttaGifViewVersion = "1.1"
+
+    // Glide
+    glideVersion = "4.7.1"
 }
 
 task clean(type: Delete) {

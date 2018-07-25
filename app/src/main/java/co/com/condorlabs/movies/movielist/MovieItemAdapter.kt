@@ -24,7 +24,7 @@ class MovieItemAdapter (val movies : List<Movie>) : RecyclerView.Adapter<Recycle
         val movieHolder = MovieItemViewHolder( holder.itemView )
 
         movieHolder.viewMovieTitle.text = movies[position].name
-        movieHolder.viewRateBar.rating = movies[position].voteAverage.toFloat()/2.0f
+        movieHolder.viewVoteAverage.text = movies[position].voteAverage
 
         //movieHolder.viewPosterPicture.drawable
     }
@@ -32,7 +32,7 @@ class MovieItemAdapter (val movies : List<Movie>) : RecyclerView.Adapter<Recycle
     internal class MovieItemViewHolder( emptyLayout : View) : RecyclerView.ViewHolder(emptyLayout) {
         var viewPosterPicture = emptyLayout.iv_activitylist_recyclerviewitem
         var viewMovieTitle = emptyLayout.tv_activitylist_recyclerviewitem_title
-        var viewRateBar = emptyLayout.rb_activitylist_recyclerviewitem_voteaverage
+        var viewVoteAverage = emptyLayout.tv_activitylist_recyclerviewitem_voteaverage
     }
 }
 
