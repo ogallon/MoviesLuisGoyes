@@ -15,13 +15,14 @@ import javax.inject.Named
 class MovieDetailActivityPresenter(
         @Named(GET_MOVIE_EXTRAS_INTERACTOR) getMovieExtrasInteractor: IUseCase<Movie, Movie>
 ) : MovieDetailContract.Presenter {
+    override var movie: Movie? = null
     override var mErrorHandler: IErrorHandler? = null
     override var mView: MovieDetailContract.View? = null
 
     private val mSubscriptions: CompositeDisposable? = CompositeDisposable()
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    fun downloadMovies() {
+    fun downloadMovieDetail() {
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)

@@ -16,8 +16,8 @@ import javax.inject.Inject
  * @author Luis Goyes on 7/19/18.
  */
 class MovieListActivity : AppCompatActivity(), MovieListContract.View {
-    override fun showMovies(movies: List<Movie>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun initializeAdapter(movies: List<Movie>) {
+        rv_activitylist_list_movies?.adapter =
     }
 
     override fun startLoadingAnimation() {
@@ -28,8 +28,6 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View {
     override fun stopLoadingAnimation() {
         gif_activitylist_saitamaloading?.visibility = View.GONE
         gif_activitylist_saitamaloading?.pause()
-
-        val iv = AppCompatImageView( this ).loadImageFromURL("")
     }
 
     @Inject

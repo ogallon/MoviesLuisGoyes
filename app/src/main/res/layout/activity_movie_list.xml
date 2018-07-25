@@ -34,14 +34,14 @@
         android:layout_height="0dp"
         app:gif="@mipmap/saitama_loading_gif"
 
-        app:layout_constraintStart_toStartOf="@id/activitylist_recyclerview"
-        app:layout_constraintEnd_toEndOf="@id/activitylist_recyclerview"
-        app:layout_constraintTop_toTopOf="@id/activitylist_recyclerview"
-        app:layout_constraintBottom_toBottomOf="@id/activitylist_recyclerview"
+        app:layout_constraintStart_toStartOf="@id/rv_activitylist_list_movies"
+        app:layout_constraintEnd_toEndOf="@id/rv_activitylist_list_movies"
+        app:layout_constraintTop_toTopOf="@id/rv_activitylist_list_movies"
+        app:layout_constraintBottom_toBottomOf="@id/rv_activitylist_list_movies"
         />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/activitylist_recyclerview"
+        android:id="@+id/rv_activitylist_list_movies"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="30dp"

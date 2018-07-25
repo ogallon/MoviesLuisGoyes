@@ -21,15 +21,22 @@ class MovieListActivityPresenter(
     private val mSubscriptions: CompositeDisposable? = CompositeDisposable()
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    fun onResume() {
+    override fun loadData() {
         mView?.startLoadingAnimation()
 
-        mSubscriptions?.add( getMoviesInteractor.execute(null,{
-            updateAdapter( it )
-        },::handleException))
+        mSubscriptions?.add(getMoviesInteractor.execute(
+                null,
+                {
+                    mView?.initializeAdapter(it)
+                },
+                ::handleException,
+                {
+                    mView?.stopLoadingAnimation()
+                }
+        ))
     }
 
-    fun updateAdapter( movies : List<Movie>) {
+    fun initializeAdapter(movies: List<Movie>) {
         movies.map {
             Log.d("Goyes", it.name)
         }

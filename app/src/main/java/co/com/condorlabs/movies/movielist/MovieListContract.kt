@@ -11,10 +11,10 @@ interface MovieListContract {
     interface View : IBaseView {
         fun startLoadingAnimation()
         fun stopLoadingAnimation()
-        fun showMovies(movies: List<Movie>)
+        fun initializeAdapter(movies: List<Movie>)
     }
 
     interface Presenter : IBasePresenter<View> {
-
+        fun loadData()
     }
 }
