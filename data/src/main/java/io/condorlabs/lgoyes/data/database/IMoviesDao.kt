@@ -16,9 +16,15 @@ interface IMoviesDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     fun insertMovie(movieEntry: DBMovieEntry) : Long
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertMovies(movieEntries: List<DBMovieEntry>) : Array<Long>
+
     @Delete
     fun deleteMovie(movieEntry: DBMovieEntry) : Int
 
     @Update
     fun updateMovie(movieEntry: DBMovieEntry) : Int
+
+    @Query("SELECT * FROM movies WHERE id = :id")
+    fun getMovie(id : Int ): Flowable<DBMovieEntry>
 }

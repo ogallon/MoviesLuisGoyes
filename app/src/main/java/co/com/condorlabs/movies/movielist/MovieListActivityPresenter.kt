@@ -6,18 +6,13 @@ import android.util.Log
 import co.com.condorlabs.movies.utils.callbacks.IErrorHandler
 import io.condorlabs.lgoyes.domain.interactors.base.IUseCase
 import io.condorlabs.lgoyes.domain.models.Movie
-import io.condorlabs.lgoyes.domain.models.MovieEntry
-import io.condorlabs.lgoyes.domain.models.PopularMoviesResponse
 import io.reactivex.disposables.CompositeDisposable
 
 /**
  * @author Luis Goyes on 7/19/18.
  */
 class MovieListActivityPresenter(
-        val mObtainPopularMoviesInteractor: IUseCase<PopularMoviesResponse, Any?>,
-        val mInsertMovieEntryInteractor: IUseCase<Long, MovieEntry>,
-        val mGetAllMovieEntriesInteractor: IUseCase<List<MovieEntry>, Any?>,
-        val mDeleteMovieEntryInteractor: IUseCase<Int, MovieEntry>
+        private val getMoviesInteractor: IUseCase<List<Movie>, Any?>
 ) : MovieListContract.Presenter {
 
     override var mErrorHandler: IErrorHandler? = null
@@ -29,72 +24,15 @@ class MovieListActivityPresenter(
     fun onResume() {
         mView?.startLoadingAnimation()
 
-        clearAllMovieEntries()
-
-        downloadStoreAndShowPopularMovies()
+        mSubscriptions?.add( getMoviesInteractor.execute(null,{
+            updateAdapter( it )
+        },::handleException))
     }
 
-    fun downloadStoreAndShowPopularMovies() {
-        mSubscriptions?.add(mObtainPopularMoviesInteractor.execute(null,
-                {
-                    it.results.forEach {
-                        val newMovieEntry = MovieEntry(null,
-                                it.id.toString(),
-                                it.title,
-                                it.voteCount.toString(),
-                                it.posterPath,
-                                it.voteAverage.toString(),
-                                it.overview,
-                                it.releaseDate,
-                                null,
-                                null,
-                                false)
-
-                        storeMovieEntry(newMovieEntry)
-                    }
-
-                    mView?.showMovies(it.results)
-
-                }, ::handleException))
-    }
-
-    fun storeMovieEntry(movieEntry: MovieEntry) {
-        mSubscriptions?.add(
-                mInsertMovieEntryInteractor.execute(
-                        movieEntry,
-                        {},
-                        {
-                            throw it
-                        }
-                )
-        )
-    }
-
-    fun clearAllMovieEntries() {
-        mSubscriptions?.add(
-                mGetAllMovieEntriesInteractor.execute(
-                        null,
-                        {
-                            it.map {
-                                deleteMovieEntry(it)
-                            }
-                        },
-                        ::handleException
-                )
-        )
-    }
-
-    @Throws
-    fun deleteMovieEntry(movieEntry: MovieEntry) {
-        mSubscriptions?.add(
-                mDeleteMovieEntryInteractor.execute(
-                        movieEntry,
-                        {},
-                        {
-                            throw it
-                        }
-                )
-        )
+    fun updateAdapter( movies : List<Movie>) {
+        movies.map {
+            Log.d("Goyes", it.name)
+        }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)

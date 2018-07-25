@@ -1,10 +1,8 @@
 package co.com.condorlabs.movies.di
 
 import android.content.Context
-import co.com.condorlabs.movies.utils.BASE_CONTEXT
 import dagger.Module
 import dagger.Provides
-import javax.inject.Named
 import javax.inject.Singleton
 
 /**
@@ -15,6 +13,5 @@ import javax.inject.Singleton
 class ApplicationModule(private val mApplicationContext : Context ){
     @Provides
     @Singleton
-    @Named(BASE_CONTEXT)
     fun provideContext():Context = mApplicationContext
 }

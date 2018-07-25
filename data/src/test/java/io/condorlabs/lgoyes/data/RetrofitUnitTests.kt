@@ -1,6 +1,7 @@
 package io.condorlabs.lgoyes.data
 
 import io.condorlabs.lgoyes.data.models.APIMovieDetail
+import io.condorlabs.lgoyes.data.models.APIMovieVideoResponse
 import io.condorlabs.lgoyes.data.models.APIPopularMoviesResponse
 import io.condorlabs.lgoyes.data.network.endpoints.MoviesService
 import io.condorlabs.lgoyes.data.utils.BASE_URL
@@ -52,6 +53,21 @@ class RetrofitUnitTests {
                 movieId,
                 THE_MOVIE_DATABASE_API_KEY,
                 WEB_REPOSITORY_DEFAULT_LANGUAGE)
+                .subscribeWith(testObserver)
+
+        testObserver.assertNoErrors()
+                .assertValueCount(1)
+                .assertComplete()
+    }
+
+    @Test
+    fun shouldGetMovieVideos() {
+        val testObserver = TestObserver<APIMovieVideoResponse>()
+        val movieId = "351286"
+
+        movieService.obtainMovieVideos(
+                movieId,
+                THE_MOVIE_DATABASE_API_KEY)
                 .subscribeWith(testObserver)
 
         testObserver.assertNoErrors()

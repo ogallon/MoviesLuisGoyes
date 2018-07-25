@@ -1,6 +1,6 @@
 package io.condorlabs.lgoyes.domain.repositories
 
-import io.condorlabs.lgoyes.domain.models.MovieEntry
+import io.condorlabs.lgoyes.domain.models.Movie
 import io.reactivex.Flowable
 import io.reactivex.Observable
 
@@ -9,11 +9,15 @@ import io.reactivex.Observable
  */
 // https://medium.com/google-developers/room-rxjava-acb0cd4f3757
 interface ILocalRepository {
-    fun getAllEntries(): Flowable<List<MovieEntry>>
+    fun getAllEntries(): Flowable<List<Movie>>
 
-    fun insertEntry(movie: MovieEntry): Observable<Long>
+    fun getEntry( id : Int ) : Flowable< Movie >
 
-    fun deleteEntry(movie: MovieEntry): Observable<Int>
+    fun insertEntry(movie: Movie): Observable<Long>
 
-    fun updateEntry(movie: MovieEntry): Observable<Int>
+    fun insertEntries(movies: List<Movie>): Observable<Array<Long>>
+
+    fun deleteEntry(movie: Movie): Observable<Int>
+
+    fun updateEntry(movie: Movie): Observable<Int>
 }
