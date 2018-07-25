@@ -21,4 +21,7 @@ interface IMoviesDao {
 
     @Update
     fun updateMovie(movieEntry: DBMovieEntry) : Int
+
+    @Query("SELECT * FROM movies WHERE id = :id")
+    fun getMovie(id : Int ): Flowable<DBMovieEntry>
 }

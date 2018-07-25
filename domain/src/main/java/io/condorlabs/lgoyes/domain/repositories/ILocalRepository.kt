@@ -11,6 +11,8 @@ import io.reactivex.Observable
 interface ILocalRepository {
     fun getAllEntries(): Flowable<List<Movie>>
 
+    fun getEntry( id : Int ) : Flowable< Movie >
+
     fun insertEntry(movie: Movie): Observable<Long>
 
     fun deleteEntry(movie: Movie): Observable<Int>

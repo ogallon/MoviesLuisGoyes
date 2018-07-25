@@ -14,7 +14,10 @@ interface IWebRepository {
                              language: String = WEB_REPOSITORY_DEFAULT_LANGUAGE,
                              page: String = WEB_REPOSITORY_DEFAULT_PAGE): Observable<List<Movie>>
 
-    fun getMovieDetails(movieId: String,
+    fun getMovieBudget(movieId: String,
                         apiKey: String,
-                        language: String = WEB_REPOSITORY_DEFAULT_LANGUAGE): Observable<Movie>
+                        language: String = WEB_REPOSITORY_DEFAULT_LANGUAGE): Observable<String>
+
+    fun getMovieTrailer(movieId: String,
+                        apiKey: String): Observable<String?>
 }

@@ -1,6 +1,7 @@
 package io.condorlabs.lgoyes.data.network.endpoints
 
 import io.condorlabs.lgoyes.data.models.APIMovieDetail
+import io.condorlabs.lgoyes.data.models.APIMovieVideoResponse
 import io.condorlabs.lgoyes.data.models.APIPopularMoviesResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -24,5 +25,5 @@ interface MoviesService {
 
     @GET("movie/{movieId}/videos")
     fun obtainMovieVideos(@Path("movieId") movieId: String,
-                          @Query("api_key") apiKey: String): Observable<APIMovieDetail>
+                          @Query("api_key") apiKey: String): Observable<APIMovieVideoResponse>
 }
