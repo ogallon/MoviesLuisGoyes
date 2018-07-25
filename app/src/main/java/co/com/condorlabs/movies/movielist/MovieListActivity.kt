@@ -1,15 +1,13 @@
 package co.com.condorlabs.movies.movielist
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.AppCompatImageView
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
 import co.com.condorlabs.movies.MoviesApplication
 import co.com.condorlabs.movies.R
-import co.com.condorlabs.movies.utils.loadImageFromURL
 import io.condorlabs.lgoyes.domain.models.Movie
 import kotlinx.android.synthetic.main.activity_movie_list.*
 import javax.inject.Inject
@@ -18,6 +16,7 @@ import javax.inject.Inject
  * @author Luis Goyes on 7/19/18.
  */
 class MovieListActivity : AppCompatActivity(), MovieListContract.View {
+
     override fun initializeAdapter(movies: List<Movie>) {
         rv_activitylist_list_movies?.adapter = MovieItemAdapter(movies)
     }
