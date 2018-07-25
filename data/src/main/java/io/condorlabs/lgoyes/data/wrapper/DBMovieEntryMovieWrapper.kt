@@ -10,7 +10,6 @@ import io.reactivex.functions.Function
 object DBMovieEntryMovieWrapper : Function<DBMovieEntry, Movie> {
     override fun apply(t: DBMovieEntry): Movie {
         return Movie(
-                t.id,
                 t.movieId,
                 t.name,
                 t.voteCount,

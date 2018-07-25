@@ -10,7 +10,6 @@ import io.reactivex.functions.Function
 object APIMovieMovieWrapper : Function<APIMovie, Movie> {
     override fun apply(t: APIMovie): Movie {
         return Movie(
-                null,
                 t.id.toString(),
                 t.title,
                 t.voteCount.toString(),

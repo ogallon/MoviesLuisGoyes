@@ -1,6 +1,7 @@
 package io.condorlabs.lgoyes.data.repositories
 
 import io.condorlabs.lgoyes.data.network.endpoints.MoviesService
+import io.condorlabs.lgoyes.data.wrapper.APIMovieDetailMovieWrapper
 import io.condorlabs.lgoyes.data.wrapper.APIPopularMoviesResponseListMoviesWrapper
 import io.condorlabs.lgoyes.domain.models.Movie
 import io.condorlabs.lgoyes.domain.repositories.IWebRepository
@@ -15,13 +16,17 @@ class WebRepository(private val mMoviesService: MoviesService) : IWebRepository 
                 APIPopularMoviesResponseListMoviesWrapper.apply(it)
             }
 
-    override fun getMovieBudget(movieId: String, apiKey: String, language: String): Observable<String> =
-            mMoviesService.obtainMovieDetail(movieId, apiKey, language).map {
-                it.budget.toString()
+    override fun getMovieBudget(movie: Movie, apiKey: String, language: String): Observable<Movie> =
+            mMoviesService.obtainMovieDetail(movie.movieId, apiKey, language).map {
+                movie.apply {
+                    budget = it.budget.toString()
+                }
             }
 
-    override fun getMovieTrailer(movieId: String, apiKey: String): Observable<String?> =
-            mMoviesService.obtainMovieVideos(movieId, apiKey).map {
-                it.results[0].key
+    override fun getMovieTrailer(movie: Movie, apiKey: String): Observable<Movie> =
+            mMoviesService.obtainMovieVideos(movie.movieId, apiKey).map { response ->
+                movie.apply {
+                    trailerLink = response.results[0].key
+                }
             }
 }

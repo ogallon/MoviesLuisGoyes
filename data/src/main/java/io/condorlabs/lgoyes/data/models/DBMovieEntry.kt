@@ -12,6 +12,7 @@ import java.io.Serializable
         tableName = DATABASE_MOVIES_TABLE_NAME
 )
 data class DBMovieEntry(
+        @PrimaryKey
         var movieId: String,
         var name: String,
         var voteCount: String,
@@ -22,7 +23,4 @@ data class DBMovieEntry(
         var budget: String? = null,
         var trailerLink: String? = null,
         var isFavorite: Boolean = false
-) : Serializable {
-    @PrimaryKey(autoGenerate = true)
-    var id: Int? = null
-}
+) : Serializable
