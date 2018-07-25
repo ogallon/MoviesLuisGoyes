@@ -1,10 +1,8 @@
 package co.com.condorlabs.movies.di
 
 import android.content.Context
-import co.com.condorlabs.movies.utils.BASE_CONTEXT
 import dagger.Module
 import dagger.Provides
-import javax.inject.Named
 import javax.inject.Singleton
 
 /**
