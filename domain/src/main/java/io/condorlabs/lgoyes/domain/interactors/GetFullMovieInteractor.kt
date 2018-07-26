@@ -5,6 +5,7 @@ import io.condorlabs.lgoyes.domain.interactors.base.ObservableUseCase
 import io.condorlabs.lgoyes.domain.models.Movie
 import io.condorlabs.lgoyes.domain.repositories.ILocalRepository
 import io.condorlabs.lgoyes.domain.repositories.IWebRepository
+import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 
@@ -16,18 +17,17 @@ class GetFullMovieInteractor(mSubscribeOnScheduler: Scheduler,
                              private val mWebServiceRepository: IWebRepository,
                              private val mLocalRepository: ILocalRepository)
     : ObservableUseCase<Movie, String>(mSubscribeOnScheduler, mObserveOnScheduler) {
-    override fun buildUseCase(params: String): Observable<Movie> = mLocalRepository
-            .getEntry(params.toInt())
-            .toObservable()
+    override fun buildUseCase(params: String): Observable<Movie> = Observable.fromPublisher(mLocalRepository
+            .getEntry(params.toInt()))
             .flatMap { extractedMovie ->
                 mWebServiceRepository
-                        .getMovieBudget(extractedMovie, THE_MOVIE_DATABASE_API_KEY)
-                        .flatMap { movieWithBudget ->
+                        .getMovieTrailer(extractedMovie, THE_MOVIE_DATABASE_API_KEY)
+                        .flatMap { movieWithTrailer ->
                             mWebServiceRepository
-                                    .getMovieTrailer(movieWithBudget, THE_MOVIE_DATABASE_API_KEY)
-                                    .doOnNext { movieWithBudgetAndTrailer->
-                                        mLocalRepository.updateEntry( movieWithBudgetAndTrailer )
-                                    }
+                                    .getMovieBudget(movieWithTrailer, THE_MOVIE_DATABASE_API_KEY)
+//                                    .doFinally { movieWithBudgetAndTrailer->
+//
+//                                            mLocalRepository.updateEntry( movieWithBudgetAndTrailer )
                         }
             }
 }

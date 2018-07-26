@@ -47,7 +47,7 @@ class RetrofitUnitTests {
     @Test
     fun shouldGetDetailMovie() {
         val testObserver = TestObserver<APIMovieDetail>()
-        val movieId = "351286"
+        val movieId = "353081"
 
         movieService.obtainMovieDetail(
                 movieId,
@@ -63,7 +63,7 @@ class RetrofitUnitTests {
     @Test
     fun shouldGetMovieVideos() {
         val testObserver = TestObserver<APIMovieVideoResponse>()
-        val movieId = "351286"
+        val movieId = "353081"
 
         movieService.obtainMovieVideos(
                 movieId,

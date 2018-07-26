@@ -27,10 +27,10 @@ class MovieDetailActivityPresenter(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun loadData() {
-        movieId?.let {
+        movieId?.let {movieID->
             mSubscriptions?.add(
                     getFullMovieInteractor.execute(
-                            movieId!!,
+                            movieID,
                             {
                                 mView?.drawView( it )
                             },

@@ -23,17 +23,17 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailContract.View {
         tv_activitydetail_releasedate_content?.text = movie.releaseDate
         tv_activitydetail_budget_content?.text = movie.budget
 
-        movie.trailerLink?.let {
+        movie.trailerLink?.let {movieTrailer ->
             tv_activitydetail_watchtrailer?.visibility = View.VISIBLE
             tv_activitydetail_watchtrailer?.setOnClickListener {
                 val youtubeIntent = Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("vnd.youtube:" + it
+                        Uri.parse("vnd.youtube:" + movieTrailer
                         )
                 )
                 val youtubeWebIntent = Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("http://www.youtube.com/watch?v=" + it
+                        Uri.parse("http://www.youtube.com/watch?v=" + movieTrailer
                         )
                 )
                 try {
