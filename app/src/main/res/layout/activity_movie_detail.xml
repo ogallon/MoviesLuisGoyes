@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".moviedetail.MovieDetailActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--
+            https://github.com/ar-android/Filem
+        -->
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_activitydetail_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/activitydetail_margin_top"
+            android:layout_marginBottom="@dimen/activitydetail_margin_bottom"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_activitydetail_verticalcenter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/tv_activitydetail_title"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/activitydetail_titlecontainer_contentheight"
+                android:layout_marginStart="@dimen/activitydetail_margin_horizontal"
+                android:gravity="center_vertical"
+                android:text="@string/activitydetail_movietitle"
+                android:textAppearance="@android:style/TextAppearance.Material.Title"
+                android:textSize="@dimen/big_text"
+                app:layout_constraintEnd_toStartOf="@+id/iv_activitydetail_addfavorite"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_activitydetail_addfavorite"
+                android:layout_width="@dimen/activitydetail_titlecontainer_contentheight"
+                android:layout_height="@dimen/activitydetail_titlecontainer_contentheight"
+                android:layout_marginEnd="@dimen/activitydetail_margin_horizontal"
+                android:contentDescription="@string/activitydetail_favorite_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_favorite_border_black_24dp" />
+
+            <View
+                android:id="@+id/divider_activitydetail_title"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginEnd="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginStart="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginTop="2dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_activitydetail_title" />
+
+            <TextView
+                android:id="@+id/tv_activitydetail_overview_subtitle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/activitydetail_overviewsubtitle_contentheight"
+                android:layout_marginEnd="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginStart="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginTop="@dimen/activitydetail_margin_vertical_small"
+                android:gravity="center_vertical"
+                android:text="@string/activitydetail_overview"
+                android:textSize="@dimen/medium_text"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_activitydetail_title" />
+
+            <View
+                android:id="@+id/divider_activitydetail_overviewsubtitle"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginTop="2dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="@+id/guideline_activitydetail_verticalcenter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_activitydetail_overview_subtitle" />
+
+            <TextView
+                android:id="@+id/tv_activitydetail_overview_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginStart="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginTop="@dimen/activitydetail_margin_vertical_tiny"
+                android:gravity="center_vertical"
+                tools:text="loremipsum"
+                android:textSize="@dimen/small_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_activitydetail_overviewsubtitle" />
+
+            <TextView
+                android:id="@+id/tv_activitydetail_releasedate_subtitle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/activitydetail_overviewsubtitle_contentheight"
+                android:layout_marginEnd="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginStart="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginTop="@dimen/activitydetail_margin_vertical_small"
+                android:gravity="center_vertical"
+                android:text="@string/activitydetail_releasedate"
+                android:textSize="@dimen/medium_text"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_activitydetail_overview_content" />
+
+            <View
+                android:id="@+id/divider_activitydetail_releasedatesubtitle"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginTop="2dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="@+id/guideline_activitydetail_verticalcenter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_activitydetail_releasedate_subtitle" />
+
+            <TextView
+                android:id="@+id/tv_activitydetail_releasedate_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginStart="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginTop="@dimen/activitydetail_margin_vertical_tiny"
+                android:gravity="center_vertical"
+                tools:text="@string/activitydetail_releasedate_example"
+                android:textSize="@dimen/small_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_activitydetail_releasedatesubtitle" />
+
+            <TextView
+                android:id="@+id/tv_activitydetail_budget_subtitle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/activitydetail_overviewsubtitle_contentheight"
+                android:layout_marginEnd="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginStart="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginTop="@dimen/activitydetail_margin_vertical_small"
+                android:gravity="center_vertical"
+                android:text="@string/activitydetail_budget"
+                android:textSize="@dimen/medium_text"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_activitydetail_releasedate_content" />
+
+            <View
+                android:id="@+id/divider_activitydetail_budgetsubtitle"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginTop="2dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="@+id/guideline_activitydetail_verticalcenter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_activitydetail_budget_subtitle" />
+
+            <TextView
+                android:id="@+id/tv_activitydetail_budget_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginStart="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginTop="@dimen/activitydetail_margin_vertical_tiny"
+                android:gravity="center_vertical"
+                tools:text="@string/activitydetail_budget_example"
+                android:textSize="@dimen/small_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_activitydetail_budgetsubtitle" />
+
+
+            <TextView
+                android:id="@+id/tv_activitydetail_watchtrailer"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/activitydetail_overviewsubtitle_contentheight"
+                android:layout_marginEnd="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginStart="@dimen/activitydetail_margin_horizontal"
+                android:layout_marginTop="@dimen/activitydetail_margin_vertical_small"
+                android:gravity="center_vertical"
+                android:text="@string/activitydetail_watchtrailer"
+                android:textSize="@dimen/small_text"
+                android:drawableStart="@drawable/ic_videocam_black_24dp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_activitydetail_budget_content" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

@@ -19,7 +19,50 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://jitpack.io"
+        }
     }
+}
+
+ext {
+    //app
+    compileSdkVersion = 27
+    minSDKVersion = 21
+    targetSdkVersion = 27
+    supportLibVersion = "27.1.1"
+    constraintLayoutVersion = "1.1.2"
+
+    // Retrofit
+    retrofitVersion = "2.4.0"
+    gsonVersion = "2.8.5"
+    retrofitAdapter = '2.2.0'
+
+    // Dagger 2
+    dagger2Version = "2.16"
+
+    // Arch
+    archVersion = "1.1.1"
+
+    // Rx
+    rxAndroidVersion = "2.0.2"
+    rxJava2Version = "2.1.17"
+
+    // Room
+    room_version = "1.1.1"
+
+    //test
+    junitVersion = "4.12"
+
+    //testImpl
+    testRunnerVersion = "1.0.2"
+    testEspressoVersion = "3.0.2"
+
+    // Gifs
+    cuttaGifViewVersion = "1.1"
+
+    // Glide
+    glideVersion = "4.7.1"
 }
 
 task clean(type: Delete) {
